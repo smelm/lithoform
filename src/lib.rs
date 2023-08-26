@@ -1,3 +1,21 @@
+/// rule 300.1
+pub enum CardType {
+    Artifact,
+    Conspiracy,
+    Creature,
+    Dungeon,
+    Enchantment,
+    Instant,
+    Land,
+    Phenomenon,
+    Plane,
+    Planeswalker,
+    Scheme,
+    Sorcery,
+    Tribal,
+    Vanguard,
+}
+
 /// rule 109.3
 pub struct ObjectCharacteristic {
     pub name: String,
