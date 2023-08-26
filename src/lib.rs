@@ -1,4 +1,13 @@
-use std::{collections::HashMap, hash::Hash};
+use std::collections::HashMap;
+
+/// rule 500.1
+enum TurnPhases {
+    Beginning,
+    PrecombatMain,
+    Combat,
+    PostcombatMain,
+    Ending,
+}
 
 /// rule 300.1
 pub enum CardType {
