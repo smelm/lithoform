@@ -4424,20 +4424,12 @@
       },
       {
         "300.2.": [
-          "Some objects have more than one card type (for example, an artifact creature). Such objects",
-          "combine the aspects of each of those card types, and are subject to spells and abilities that affect",
-          "either or all of those card types.",
+          "Some objects have more than one card type (for example, an artifact creature). Such objects combine the aspects of each of those card types, and are subject to spells and abilities that affect either or all of those card types.",
           {
-            "300.2a": [
-              "An object that’s both a land and another card type (for example, an artifact land) can only be",
-              "played as a land. It can’t be cast as a spell."
-            ]
+            "300.2a": "An object that’s both a land and another card type (for example, an artifact land) can only be played as a land. It can’t be cast as a spell."
           },
           {
-            "300.2b": [
-              "Each tribal card has another card type. Casting and resolving a tribal card follow the rules",
-              "for casting and resolving a card of the other card type."
-            ]
+            "300.2b": "Each tribal card has another card type. Casting and resolving a tribal card follow the rules for casting and resolving a card of the other card type."
           }
         ]
       }
@@ -5517,11 +5509,7 @@
   "4. Zones": {
     "400. General": [
       {
-        "400.1.": [
-          "A zone is a place where objects can be during a game. There are normally seven zones: library,",
-          "hand, battlefield, graveyard, stack, exile, and command. Some older cards also use the ante zone.",
-          "Each player has their own library, hand, and graveyard. The other zones are shared by all players."
-        ]
+        "400.1.": "A zone is a place where objects can be during a game. There are normally seven zones: library, hand, battlefield, graveyard, stack, exile, and command. Some older cards also use the ante zone. Each player has their own library, hand, and graveyard. The other zones are shared by all players."
       },
       {
         "400.2.": [

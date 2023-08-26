@@ -34,8 +34,26 @@ pub struct ObjectCharacteristic {
     pub life_modifier: i32,
 }
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+type Zone = Vec<ObjectCharacteristic>;
+
+struct PlayerZones {
+    library: Zone,
+    hand: Zone,
+    graveyard: Zone,
+}
+
+struct SharedZones {
+    battlefield: Zone,
+    stack: Zone,
+    exile: Zone,
+    command: Zone,
+    ante: Zone,
+}
+
+/// 400.1
+struct Zones {
+    player_zones: Vec<PlayerZones>,
+    shared_zones: SharedZones,
 }
 
 #[cfg(test)]
@@ -44,7 +62,6 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        assert_eq!(2 + 2, 4);
     }
 }
