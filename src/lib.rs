@@ -1,3 +1,21 @@
+/// rule 109.3
+pub struct ObjectCharacteristic {
+    pub name: String,
+    pub mana_cost: String,
+    pub color: String,
+    pub color_indicator: String,
+    pub card_type: String,
+    pub subtype: String,
+    pub supertype: String,
+    pub rules_text: String,
+    pub abilities: String,
+    pub power: i32,
+    pub toughness: i32,
+    pub loyalty: i32,
+    pub hand_modifier: i32,
+    pub life_modifier: i32,
+}
+
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }
