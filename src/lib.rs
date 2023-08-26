@@ -1,5 +1,38 @@
 use std::collections::HashMap;
 
+type PlayerID = usize;
+
+struct Player {
+    name: String,
+}
+
+impl Player {
+    fn new(name: &str) -> Player {
+        Player {
+            name: name.to_string(),
+        }
+    }
+}
+
+struct Game {
+    players: Vec<Player>,
+    active_player: PlayerID,
+}
+
+impl Game {
+    fn new() -> Game {
+        Game {
+            players: vec![],
+            active_player: 0,
+        }
+    }
+
+    fn add_player(&mut self, player: Player) -> PlayerID {
+        self.players.push(player);
+        return self.players.len() - 1;
+    }
+}
+
 /// rule 500.1
 // TODO missing from 500.1 is that these happen every round
 mod Phases {
@@ -59,7 +92,6 @@ pub struct ObjectCharacteristic {
     pub life_modifier: i32,
 }
 
-type PlayerID = u16;
 type Zone = Vec<ObjectCharacteristic>;
 
 struct PlayerZones {
@@ -87,7 +119,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn _102_1_active_player() {
+        let mut game = Game::new();
+        let foo_id = game.add_player(Player::new("foo"));
+        let bar_id = game.add_player(Player::new("bar"));
+        assert_eq!(game.active_player, foo_id);
+        assert_ne!(game.active_player, bar_id);
     }
 }
