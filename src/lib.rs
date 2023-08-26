@@ -1,3 +1,5 @@
+use std::{collections::HashMap, hash::Hash};
+
 /// rule 300.1
 pub enum CardType {
     Artifact,
@@ -34,6 +36,7 @@ pub struct ObjectCharacteristic {
     pub life_modifier: i32,
 }
 
+type PlayerID = u16;
 type Zone = Vec<ObjectCharacteristic>;
 
 struct PlayerZones {
@@ -52,7 +55,7 @@ struct SharedZones {
 
 /// 400.1
 struct Zones {
-    player_zones: Vec<PlayerZones>,
+    player_zones: HashMap<PlayerID, PlayerZones>,
     shared_zones: SharedZones,
 }
 
