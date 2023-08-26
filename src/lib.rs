@@ -115,15 +115,29 @@ struct Zones {
 }
 
 #[cfg(test)]
-mod tests {
+mod _1_game_concepts {
     use super::*;
 
-    #[test]
-    fn _102_1_active_player() {
-        let mut game = Game::new();
-        let foo_id = game.add_player(Player::new("foo"));
-        let bar_id = game.add_player(Player::new("bar"));
-        assert_eq!(game.active_player, foo_id);
-        assert_ne!(game.active_player, bar_id);
+    mod _102_players {
+        use super::*;
+
+        fn setup_game() -> (Game, PlayerID, PlayerID, PlayerID, PlayerID) {
+            let mut game = Game::new();
+            let a = game.add_player(Player::new("a"));
+            let b = game.add_player(Player::new("b"));
+            let c = game.add_player(Player::new("c"));
+            let d = game.add_player(Player::new("d"));
+
+            return (game, a, b, c, d);
+        }
+
+        #[test]
+        fn _102_1_active_player() {
+            let (game, a, b, c, d) = setup_game();
+            assert_eq!(game.active_player, a);
+            assert_ne!(game.active_player, b);
+            assert_ne!(game.active_player, c);
+            assert_ne!(game.active_player, d);
+        }
     }
 }
