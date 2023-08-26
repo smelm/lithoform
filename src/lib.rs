@@ -1,12 +1,26 @@
 use std::collections::HashMap;
 
 /// rule 500.1
-enum TurnPhases {
-    Beginning,
-    PrecombatMain,
-    Combat,
-    PostcombatMain,
-    Ending,
+// TODO missing from 500.1 is that these happen every round
+mod Phases {
+    mod Beginning {
+        const UNTAP: u16 = 0;
+        const UPKEEP: u16 = 1;
+        const DRAW: u16 = 2;
+    }
+    const PRE_COMBAT_MAIN: u16 = 3;
+    mod Combat {
+        const BEGINNING_OF_COMBAT: u16 = 4;
+        const DECLARE_ATTACKERS: u16 = 5;
+        const DECLARE_BLOCKERS: u16 = 6;
+        const COMBAT_DAMAGE: u16 = 7;
+        const END_OF_COMBAT: u16 = 8;
+    }
+    const POST_COMBAT_MAIN: u16 = 9;
+    mod Ending {
+        const END: u16 = 10;
+        const CLEANUP: u16 = 11;
+    }
 }
 
 /// rule 300.1
