@@ -1,3 +1,4 @@
+use rand::Rng;
 use std::collections::HashMap;
 
 type PlayerID = usize;
@@ -17,19 +18,30 @@ impl Player {
 struct Game {
     players: Vec<Player>,
     active_player: PlayerID,
+    player_turn: Option<PlayerID>,
 }
 
 impl Game {
-    fn new() -> Game {
+    fn new(players: Vec<Player>) -> Game {
         Game {
-            players: vec![],
+            players,
             active_player: 0,
+            player_turn: None,
         }
     }
 
-    fn add_player(&mut self, player: Player) -> PlayerID {
-        self.players.push(player);
-        return self.players.len() - 1;
+    fn start(&mut self) {
+        let player_id = rand::thread_rng().gen_range(0..self.players.len());
+        self.player_turn = Some(player_id);
+    }
+
+    fn player_id(&self, name: &str) -> Result<PlayerID, ()> {
+        for i in 0..self.players.len() {
+            if self.players[i].name == name {
+                return Ok(i);
+            }
+        }
+        return Err(());
     }
 
     fn is_opponent(&self, a: PlayerID, b: PlayerID) -> bool {
@@ -134,11 +146,17 @@ mod _1_game_concepts {
         use super::*;
 
         fn setup_game() -> (Game, PlayerID, PlayerID, PlayerID, PlayerID) {
-            let mut game = Game::new();
-            let a = game.add_player(Player::new("a"));
-            let b = game.add_player(Player::new("b"));
-            let c = game.add_player(Player::new("c"));
-            let d = game.add_player(Player::new("d"));
+            let game = Game::new(vec![
+                Player::new("a"),
+                Player::new("b"),
+                Player::new("c"),
+                Player::new("d"),
+            ]);
+
+            let a = game.player_id("a").unwrap();
+            let b = game.player_id("b").unwrap();
+            let c = game.player_id("c").unwrap();
+            let d = game.player_id("d").unwrap();
 
             return (game, a, b, c, d);
         }
