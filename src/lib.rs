@@ -80,20 +80,28 @@ pub enum CardType {
 
 /// rule 109.3
 pub struct ObjectCharacteristic {
-    pub name: String,
-    pub mana_cost: String,
-    pub color: String,
-    pub color_indicator: String,
-    pub card_type: String,
-    pub subtype: String,
-    pub supertype: String,
-    pub rules_text: String,
-    pub abilities: String,
-    pub power: i32,
-    pub toughness: i32,
-    pub loyalty: i32,
-    pub hand_modifier: i32,
-    pub life_modifier: i32,
+    pub name: Option<String>,
+    pub mana_cost: Option<String>,
+    pub color: Option<String>,
+    pub color_indicator: Option<String>,
+    pub card_type: Option<String>,
+    pub subtype: Option<String>,
+    pub supertype: Option<String>,
+    pub rules_text: Option<String>,
+    pub abilities: Option<String>,
+    pub power: Option<i32>,
+    pub toughness: Option<i32>,
+    pub loyalty: Option<i32>,
+    pub hand_modifier: Option<i32>,
+    pub life_modifier: Option<i32>,
+}
+
+/// rule 110.5
+pub struct PermanentStatus {
+    pub tapped: bool,
+    pub flipped: bool,
+    pub face_up: bool,
+    pub phased_in: bool,
 }
 
 type Zone = Vec<ObjectCharacteristic>;
