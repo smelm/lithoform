@@ -31,6 +31,10 @@ impl Game {
         self.players.push(player);
         return self.players.len() - 1;
     }
+
+    fn is_opponent(&self, a: PlayerID, b: PlayerID) -> bool {
+        return a != b;
+    }
 }
 
 /// rule 500.1
@@ -138,6 +142,23 @@ mod _1_game_concepts {
             assert_ne!(game.active_player, b);
             assert_ne!(game.active_player, c);
             assert_ne!(game.active_player, d);
+        }
+
+        // TODO: test team logic
+        #[test]
+        fn _102_3_opponent() {
+            let (game, a, b, c, d) = setup_game();
+            assert!(game.is_opponent(a, b));
+            assert!(game.is_opponent(a, c));
+            assert!(game.is_opponent(a, d));
+            assert!(game.is_opponent(b, c));
+            assert!(game.is_opponent(b, d));
+            assert!(game.is_opponent(c, d));
+
+            assert!(!game.is_opponent(a, a));
+            assert!(!game.is_opponent(b, b));
+            assert!(!game.is_opponent(c, c));
+            assert!(!game.is_opponent(d, d));
         }
     }
 }
